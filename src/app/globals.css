@@ -1,0 +1,105 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/*
+  mirrorbox — "evidence room / case file" identity: manila-paper background,
+  stamped red accents, hairline rule lines like a records cabinet. Colours are
+  exposed as shadcn/ui tokens so the components stay vanilla.
+*/
+:root {
+  --radius: 0.25rem;
+  --background: #f1e8d5;
+  --foreground: #2b2114;
+  --card: #faf3e3;
+  --card-foreground: #2b2114;
+  --popover: #faf3e3;
+  --popover-foreground: #2b2114;
+  --primary: #8a2c1f;
+  --primary-foreground: #faf3e3;
+  --secondary: #e2d4af;
+  --secondary-foreground: #2b2114;
+  --muted: #e9ddc0;
+  --muted-foreground: #6b5d41;
+  --accent: #27584f;
+  --accent-foreground: #faf3e3;
+  --warning: #b4791c;
+  --destructive: #8a2c1f;
+  --border: #c9b687;
+  --input: #d8c69a;
+  --ring: #8a2c1f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-warning: var(--warning);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --font-serif: 'Georgia', 'Iowan Old Style', 'Palatino Linotype', serif;
+  --font-mono:
+    ui-monospace, 'SF Mono', 'JetBrains Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background font-sans text-sm text-foreground antialiased;
+    background-image:
+      repeating-linear-gradient(rgba(43, 33, 20, 0.035) 0 1px, transparent 1px 100%),
+      radial-gradient(ellipse at top, rgba(255, 255, 255, 0.25), transparent 60%);
+    background-size:
+      100% 28px,
+      100% 100%;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    @apply font-semibold tracking-tight;
+  }
+}
+
+/* The little oval "classified" stamp used on confidential dossiers. */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+}
+
+/* A row of four tabs representing the four id formats of a dossier. */
+.format-tab {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
