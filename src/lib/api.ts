@@ -26,3 +26,14 @@ export function toId(value: unknown): number | null {
   const n = typeof value === 'string' && value.trim() !== '' ? Number(value) : value;
   return typeof n === 'number' && Number.isInteger(n) && n > 0 ? n : null;
 }
+
+export async function readJson(request: NextRequest): Promise<Record<string, unknown> | null> {
+  try {
+    const body: unknown = await request.json();
+    return body && typeof body === 'object' && !Array.isArray(body)
+      ? (body as Record<string, unknown>)
+      : null;
+  } catch {
+    return null;
+  }
+}
